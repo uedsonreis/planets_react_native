@@ -1,3 +1,5 @@
+import { Planet } from "../dto/planet"
+
 const url = 'https://planets-info-by-newbapi.p.rapidapi.com/api/v1'
 
 const options = {
@@ -8,8 +10,9 @@ const options = {
     }
 }
 
-export async function getPlanets() {
-    return await fetch(`${url}/planet/list`, options)
+export async function getPlanets(): Promise<Planet[]> {
+    const list: Planet[] = await fetch(`${url}/planet/list`, options)
         .then(response => response.json())
         .catch(err => console.error(err))
+    return list.sort((a, b) => a.id - b.id)
 }

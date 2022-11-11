@@ -1,5 +1,6 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { FlatList, SafeAreaView, Text } from 'react-native'
+import { PlanetItem } from '../../components/PlanetItem';
 
 import * as service from '../../services/planet.service'
 
@@ -17,9 +18,15 @@ export default function HomePage() {
     }, [])
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             { planets.length < 1 && (<Text>Loading...</Text>) }
-            <Text>Solar System Planets: {planets.length}</Text>
-        </View>
+            { planets.length > 0 && (
+                <FlatList
+                    data={planets}
+                    renderItem={({item}) => <PlanetItem planet={item} />}
+                    keyExtractor={item => item.id}
+                />
+            ) }
+        </SafeAreaView>
     )
 }
