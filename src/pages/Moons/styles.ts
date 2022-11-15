@@ -8,8 +8,18 @@ export default StyleSheet.create({
         justifyContent: 'flex-start',
     },
 
-    inputText: {},
+    formView: {
+        marginTop: 10,
+        marginBottom: 15,
+        marginHorizontal: 10,
+    },
 
-    addButton: {},
+    inputText: {
+        fontSize: 16,
+        marginBottom: 10,
+        marginHorizontal: 2,
+        borderBottomWidth: 1,
+        borderBottomColor: 'gray',
+    },
 
 })
