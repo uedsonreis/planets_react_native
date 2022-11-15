@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar'
+import { NavigationContainer } from '@react-navigation/native'
 
-import HomePage from './src/pages/Home'
+import Routes from './src/pages/Routes'
 
 export default function App() {
-  return (
-    <>
-      <StatusBar style="auto" />
-      <HomePage />
-    </>
-  )
+    return (
+        <NavigationContainer>
+            <StatusBar style="auto" />
+            <Routes />
+        </NavigationContainer>
+    )
 }

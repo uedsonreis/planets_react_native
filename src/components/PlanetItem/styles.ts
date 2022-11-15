@@ -9,7 +9,9 @@ export default StyleSheet.create({
         width: Dimensions.get('window').width - 40,
     },
 
-    title: {},
+    title: {
+        fontSize: 16,
+    },
 
     subTitle: {
         fontSize: 12,

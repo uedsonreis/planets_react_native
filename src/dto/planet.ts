@@ -1,11 +1,11 @@
 export interface Planet {
 
     id: number
-    key: String
-    name: String
-    planetOrder: String
-    description: String
-    imgSrc: [{ img: String }]
-    basicDetails: [{ mass: String, volume: String }]
+    key: string
+    name: string
+    planetOrder: string
+    description: string
+    imgSrc: [{ img: string }]
+    basicDetails: [{ mass: string, volume: string }]
 
 }
