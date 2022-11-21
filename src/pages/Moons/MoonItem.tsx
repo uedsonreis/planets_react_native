@@ -1,42 +1,43 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { BorderlessButton, Swipeable } from 'react-native-gesture-handler'
+import { BorderlessButton, GestureHandlerRootView, Swipeable } from 'react-native-gesture-handler'
 
-type Props = { text: string }
+type Props = { moonName: string, removeAction: (text: string) => void }
 
-export default function MoonItem({ text }: Props) {
+export default function MoonItem({ moonName, removeAction }: Props) {
 
-    function DeleteButton({ text }: Props) {
+    function DeleteButton() {
         return (
             <View style={styles.deleteContainer}>
-                <BorderlessButton onPress={() => alert('Delete it now!')} style={styles.deleteButton}>
-                    <Text>Remove</Text>
+                <BorderlessButton onPress={() => removeAction(moonName)} style={styles.deleteButton}>
+                    <Text>Delete</Text>
                 </BorderlessButton>
             </View>
         )
     }
 
     return (
-        <Swipeable renderRightActions={() => <DeleteButton text={text} />}>
-            <View style={styles.container}>
-                <Text style={styles.text}>{text}</Text>
-            </View>
-        </Swipeable>
+        <GestureHandlerRootView>
+            <Swipeable renderRightActions={() => <DeleteButton />}>
+                <View style={styles.container}>
+                    <Text style={styles.text}>{moonName}</Text>
+                </View>
+            </Swipeable>
+        </GestureHandlerRootView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        borderTopWidth: 1,
+        borderColor: 'gray',
         paddingVertical: 10,
         paddingHorizontal: 20,
-        borderWidth: 1,
     },
     text: {
         fontSize: 18,
     },
     deleteContainer: {
-        marginLeft: -5,
-        marginVertical: 5,
         alignItems: 'center',
         flexDirection: "row",
         justifyContent: 'center',
@@ -44,7 +45,6 @@ const styles = StyleSheet.create({
     deleteButton: {
         padding: 10,
         height: '100%',
-        marginRight: 5,
         alignItems: 'center',
         backgroundColor: 'red',
         justifyContent: "center",
